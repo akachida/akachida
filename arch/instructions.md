@@ -285,12 +285,17 @@ pacman -Syu
     ```bash
     pacman -S grub efibootmgr os-prober
     ```
-2.  Instale o GRUB no diretório EFI:
+2.  Monte a partição Windows:
     ```bash
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH
+    mkdir -p /mnt/windows_efi
+    mount /dev/nvme0n0pX /mnt/windows_efi # Substitua 'X' pelo número correto da partição EFI do Windows
+    ```
+3.  Instale o GRUB no diretório EFI:
+    ```bash
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH --removable
     ```
     (O `--bootloader-id=ARCH` define o nome da entrada de boot na UEFI).
-3.  **Importante para Dual Boot:** Edite `/etc/default/grub` para que o `os-prober` detecte o Windows:
+4.  **Importante para Dual Boot:** Edite `/etc/default/grub` para que o `os-prober` detecte o Windows:
     ```bash
     nvim /etc/default/grub
     ```
@@ -304,7 +309,7 @@ pacman -Syu
     GRUB_SAVEDEFAULT=true
     # GRUB_DISABLE_SUBMENU=y # Descomente se não quiser submenus
     ```
-4.  Gere o arquivo de configuração do GRUB:
+5.  Gere o arquivo de configuração do GRUB:
     ```bash
     grub-mkconfig -o /boot/grub/grub.cfg
     ```
