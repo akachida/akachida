@@ -541,6 +541,14 @@ cp /usr/share/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 
 Edite `~/.config/hypr/hyprland.conf` e adicione/modifique:
 
+  * **Troque as variáveis padrão (importante\!):**
+    ```ini
+    ...
+    $terminal = ghostty
+    $fileManager = thunar
+    ...
+    ```
+
   * **Variáveis de Ambiente NVIDIA (importante\!):**
 
     ```ini
