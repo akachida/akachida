@@ -138,7 +138,7 @@ mount /dev/nvme0n1p3 /mnt/home
 ```bash
 nvim /etc/pacman.d/mirrorlist
 ou
-reflector --country "Brazil" --country "Portugal" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --country "Brazil" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy
 ```
 
@@ -209,7 +209,7 @@ hwclock --systohc
     (Ou `pt_BR.UTF-8` se preferir o sistema em português).
 4.  Defina o layout do teclado persistente (opcional aqui, pois Hyprland terá sua própria configuração, mas bom para o console):
     ```bash
-    echo "KEYMAP=us-international" > /etc/vconsole.conf
+    echo "KEYMAP=us-acentos" > /etc/vconsole.conf
     ```
 
 #### E. Configurar Nome do Host (Hostname)
@@ -395,6 +395,7 @@ Sua placa é uma RTX 4070 Super, que requer drivers recentes. Usaremos os driver
 ### VII. Instalar Ambiente Gráfico (Hyprland e Ferramentas)
 
 Primeiro, vamos instalar algumas dependências e o servidor de exibição.
+Obs: o comando `makepkg` deve ser executado em user level, para fazer isso saia da sessão de root com `exit` e depois execute `arch-chroot -u username /mnt`
 
 1.  **Servidor de Áudio (PipeWire):**
 
