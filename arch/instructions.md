@@ -281,9 +281,9 @@ pacman -Syu
 
 ### V. Instalar Bootloader (GRUB para Dual Boot)
 
-1.  Instale os pacotes necessários para o GRUB e detecção de outros SOs:
+1.  Instale os pacotes necessários para o GRUB e detecção de outros SOs(obs: `amd-ucode` somente se seu processador é um AMD):
     ```bash
-    pacman -S grub efibootmgr os-prober
+    pacman -S grub efibootmgr os-prober amd-ucode
     ```
 2.  Monte a partição Windows:
     ```bash
