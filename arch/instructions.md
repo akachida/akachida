@@ -50,7 +50,7 @@ Este guia tem como objetivo fornecer um passo a passo para a instalação do Arc
         ```
         station <SEU_DISPOSITIVO_WIFI> scan
         station <SEU_DISPOSITIVO_WIFI> get-networks
-        station <SEU_DISPOSITIVO_WIFI> connect "CHIDAS_ROOM_5G"
+        station <SEU_DISPOSITIVO_WIFI> connect "{WIFI_NAME}"
         ```
         (Você será solicitado a inserir a senha do Wi-Fi)
     * Verifique a conexão:
@@ -78,7 +78,7 @@ timedatectl set-ntp true
 Seu teclado é Inglês Internacional.
 
 ```bash
-loadkeys us-international
+loadkeys us-acentos
 ```
 
 #### C. Particionamento do Disco (UEFI com NVMe)
@@ -137,6 +137,9 @@ mount /dev/nvme0n1p3 /mnt/home
 
 ```bash
 nvim /etc/pacman.d/mirrorlist
+ou
+reflector --country "Brazil" --country "Portugal" --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Syy
 ```
 
 (Descomente os servidores desejados, por exemplo, os do Brasil. Mova os mais rápidos para o topo).
